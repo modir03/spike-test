@@ -1,0 +1,8 @@
+# {"S3-task":{"x":331,"y":304}}
+MyMwaaWorkflow-1785418291441:
+  dag_id: MyMwaaWorkflow-1785418291441
+  is_paused_upon_creation: false
+  tasks:
+    S3-task:
+      operator: airflow.providers.amazon.aws.operators.s3.S3ListOperator
+      bucket: amazon-sagemaker-904233107470-eu-west-1-97b398d3b56c
