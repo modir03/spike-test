@@ -1,0 +1,24 @@
+name: SMUS Branch Test
+
+on:
+  push:
+    branches:
+      - dev
+      - 'feature/**'
+      - 'feature*'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Echo branch info
+        run: |
+          echo "This workflow was triggered by a push to branch: ${{ github.ref_name }}"
+          echo "Commit SHA: ${{ github.sha }}"
+          echo "Actor: ${{ github.actor }}"
+
+      - name: List repository contents
+        run: ls -la

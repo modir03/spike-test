@@ -1,0 +1,18 @@
+{
+  "project_name": "edp-my-project",
+  "__project_slug": "{{ cookiecutter.project_name | lower | replace(' ', '-') | replace('_', '-') }}",
+  "project_description": "Shared infrastructure, templates, and common services for EDP Data Domains.",
+  "codebuild_runner_name": "CodeBuild-GitHub-Runner-Edp",
+  "aws_region": "eu-west-1",
+  "domain_name": "edp-data",
+  "domain_unit_name": "product-data-domain",
+  "assoc_account_name": "edp-product-data-domain-assoc",
+  "s3_bucket_prefix": "edp-core",
+  "project_prefix": "edp-pdd",
+  "codeowners": "user1@bbc.co.uk user2@bbc.co.uk",
+  "default_data_product": "edp-experimentation",
+  "python_version": "3.12",
+  "_copy_without_render": [
+    ".github/actions"
+  ]
+}
