@@ -1,0 +1,105 @@
+{
+  "JobName": "new_etl",
+  "bucketName": "amazon-sagemaker-904233107470-eu-west-1-97b398d3b56c",
+  "formInput": {
+    "FileName": "new_etl",
+    "ContentType": "text/x-python",
+    "Body": "import sys\nfrom pyspark.context import SparkContext\nfrom pyspark.sql import SparkSession\n\nsc = SparkContext.getOrCreate()\nspark = SparkSession.builder.getOrCreate()\n\n# Script generated for node S3DataSource\nS3DataSource_1785917923997 = spark.read.format(\"csv\") \\\n    .option(\"inferschema\", \"true\") \\\n    .option(\"multiLine\", \"true\") \\\n    .option(\"header\", \"true\") \\\n    .option(\"recursiveFileLookup\", \"true\") \\\n    .option(\"sep\", \",\") \\\n    .load(\"s3://amazon-sagemaker-904233107470-eu-west-1-97b398d3b56c/dzd-59rbf0ds627n86/6n7k7vqbk2kx06/dev/\")\n\r# Script generated for node S3DataSink\nS3DataSource_1785917923997.write.format(\"csv\") \\\n    .option(\"header\", False) \\\n    .mode(\"append\") \\\n    .save(\"s3://amazon-sagemaker-904233107470-eu-west-1-97b398d3b56c/dzd-59rbf0ds627n86/6n7k7vqbk2kx06/spike/feature/\")\n"
+  },
+  "JobUpdate": {
+    "Name": "new_etl",
+    "Timeout": 480,
+    "WorkerType": "G.1X",
+    "NumberOfWorkers": 10,
+    "GlueVersion": "5.1",
+    "MaxRetries": 0,
+    "Role": "arn:aws:iam::904233107470:role/datazone_usr_role_6n7k7vqbk2kx06_bzzohz6qglw5ue",
+    "JobMode": "VISUAL",
+    "JobRunQueuingEnabled": false,
+    "ExecutionProperty": {
+      "MaxConcurrentRuns": 1
+    },
+    "ExecutionClass": "STANDARD",
+    "NonOverridableArguments": {},
+    "Connections": {
+      "Connections": [
+        "datazone-glue-network-connection-subnet-03c8be6dd90a55c1b-6n7k7vqbk2kx06-dev",
+        "datazone-glue-network-connection-subnet-01e456c34e1f7ba05-6n7k7vqbk2kx06-dev",
+        "datazone-glue-network-connection-subnet-0d779d69fb1a103e1-6n7k7vqbk2kx06-dev"
+      ]
+    },
+    "DefaultArguments": {
+      "--enable-lakeformation-fine-grained-access": "true",
+      "--job-language": "python",
+      "--TempDir": "s3://amazon-sagemaker-904233107470-eu-west-1-97b398d3b56c/dzd-59rbf0ds627n86/6n7k7vqbk2kx06/sys/glue/temp/",
+      "--enable-metrics": "true",
+      "--enable-observability-metrics": "false",
+      "--spark-event-logs-path": "s3://amazon-sagemaker-904233107470-eu-west-1-97b398d3b56c/dzd-59rbf0ds627n86/6n7k7vqbk2kx06/sys/glue/spark/",
+      "--enable-glue-datacatalog": "true",
+      "--enable-spark-ui": "true",
+      "--enable-auto-scaling": "true",
+      "--smus-job-compute": "project.spark.fineGrained",
+      "--smus-orig-asset": "jobs/new_etl/new_etl.vetl",
+      "--conf": "spark.sql.extensions=org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions --conf spark.datasource.redshift.community.glue_endpoint=https://glue.eu-west-1.amazonaws.com --conf spark.datasource.redshift.community.data_api_endpoint=https://redshift-data.eu-west-1.amazonaws.com --conf spark.hadoop.fs.s3.impl=com.amazon.ws.emr.hadoop.fs.EmrFileSystem --conf spark.driver.maxResultSize=0 --conf spark.sql.catalog.spark_catalog=org.apache.iceberg.spark.SparkSessionCatalog --conf spark.sql.catalog.spark_catalog.catalog-impl=org.apache.iceberg.aws.glue.GlueCatalog --conf spark.sql.catalog.spark_catalog.glue.id=904233107470 --conf spark.sql.catalog.spark_catalog.glue.account-id=904233107470 --conf spark.sql.catalog.spark_catalog.glue.endpoint=https://glue.eu-west-1.amazonaws.com --conf spark.sql.catalog.spark_catalog.client.region=eu-west-1 --conf spark.extraListeners=io.openlineage.spark.agent.OpenLineageSparkListener --conf spark.openlineage.transport.type=amazon_datazone_api --conf spark.openlineage.transport.domainId=dzd-59rbf0ds627n86 --conf spark.openlineage.columnLineage.datasetLineageEnabled=True --conf spark.openlineage.facets.custom_environment_variables=[AWS_DEFAULT_REGION;GLUE_VERSION;GLUE_COMMAND_CRITERIA;GLUE_PYTHON_VERSION;] --conf spark.glue.accountId=904233107470 --conf spark.glue.JOB_NAME=new_etl",
+      "--custom-logGroup-prefix": "datazone-6n7k7vqbk2kx06-dev",
+      "author": "ruchika.modi.ext@bbc.co.uk"
+    },
+    "connection": {
+      "configurations": [
+        {
+          "classification": "GlueDefaultArgument",
+          "properties": {
+            "--enable-lakeformation-fine-grained-access": "true"
+          }
+        }
+      ],
+      "domainIdentifier": "dzd-59rbf0ds627n86",
+      "projectIdentifier": "6n7k7vqbk2kx06",
+      "environmentIdentifier": "bzzohz6qglw5ue",
+      "connectionIdentifier": "3i12ysqvjwo7bq",
+      "name": "project.spark.fineGrained",
+      "displayType": "Glue (Spark)",
+      "type": "SPARK",
+      "authorizationMode": "PROJECT",
+      "provisioningType": "MANAGED",
+      "createdAt": "2026-07-23T09:33:44.244Z",
+      "updatedAt": "2026-07-23T09:33:44.244Z",
+      "location": {
+        "awsRegion": "eu-west-1",
+        "awsAccountId": "904233107470"
+      },
+      "physicalEndpoints": [
+        {
+          "awsLocation": {
+            "awsAccountId": "904233107470",
+            "awsRegion": "eu-west-1"
+          },
+          "glueConnectionName": "datazone-glue-network-connection-subnet-03c8be6dd90a55c1b-6n7k7vqbk2kx06-dev",
+          "glueConnectionNames": [
+            "datazone-glue-network-connection-subnet-03c8be6dd90a55c1b-6n7k7vqbk2kx06-dev",
+            "datazone-glue-network-connection-subnet-01e456c34e1f7ba05-6n7k7vqbk2kx06-dev",
+            "datazone-glue-network-connection-subnet-0d779d69fb1a103e1-6n7k7vqbk2kx06-dev"
+          ]
+        }
+      ],
+      "sparkGlueProperties": {
+        "glueConnection": {},
+        "sessionConfigs": {
+          "idle_timeout": 60,
+          "glue_version": "5.0",
+          "worker_type": "G.1X",
+          "number_of_workers": 10
+        }
+      }
+    },
+    "Command": {
+      "Name": "glueetl",
+      "ScriptLocation": "s3://amazon-sagemaker-904233107470-eu-west-1-97b398d3b56c/dzd-59rbf0ds627n86/6n7k7vqbk2kx06/shared/jobs/new_etl/new_etl.py",
+      "PythonVersion": "3.9"
+    },
+    "Tags": {
+      "AmazonDataZoneProject": "6n7k7vqbk2kx06",
+      "AmazonDataZoneUsername": "ruchika.modi.ext@bbc.co.uk"
+    }
+  }
+}
